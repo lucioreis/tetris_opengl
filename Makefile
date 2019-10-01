@@ -1,8 +1,14 @@
-main.out: Tetris.o jogoTetris.o
-	g++ Tetris.o jogoTetris.o -lncurses
+main.out: tetris.o interface_menu.o game.o
+	g++ tetris.o interface_menu.o game.o -lglut -lGL -lGLU -lm -o main.out
 
-Tetris.o:
-	g++ -c Tetris.cpp
+tetris.o:
+	g++ -c tetris.cpp
 
-jogoTetris.o:
-	g++ -c jogoTetris.cpp
+interface_menu.o:
+	g++ -c interface_menu.cpp -lglut -lGL -lGLU -lm
+
+game.o:
+	g++ -c game.cpp -lglut -lGL -lGLU -lm
+
+clear:
+	rm *.o *.out
